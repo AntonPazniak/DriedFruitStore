@@ -17,16 +17,36 @@ import org.springframework.security.authentication.AuthenticationManager;
 
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
 public class AuthentificationService {
 
     private final UserRepository userRepository;
+    private final UserService userService;
     private final RoleService roleService;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     private final PasswordEncoder passwordEncoder;
+
+    public AuthentificationResponseDTO oAuthenticate(Map<String, Object> attributes){
+        String email = (String) attributes.get("email");
+        User user = userService.findByEmail(email).orElseGet(
+                () ->{
+                    User newUser =  User.builder()
+                            .email(email)
+                            .firstName(attributes.get("name").toString())
+                            .roles(List.of(roleService.getRole(RoleEnum.USER)))
+                            .build();
+                    return userRepository.save(newUser);
+                }
+        );
+
+        return new AuthentificationResponseDTO(
+                jwtService.generateToken(user)
+        );
+    }
 
     public AuthentificationResponseDTO register(RegisterRequestDTO registerRequestDTO) {
         User user = User.builder()

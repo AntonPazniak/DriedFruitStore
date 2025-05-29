@@ -2,8 +2,11 @@ package com.example.driedfruitstore.service;
 
 import com.example.driedfruitstore.model.entity.User;
 
+import java.util.Optional;
+
 public interface UserService {
 
     void save(User user);
-    User findById(Long id);
+    Optional<User> findById(Long id);
+    Optional<User> findByEmail(String email);
 }
