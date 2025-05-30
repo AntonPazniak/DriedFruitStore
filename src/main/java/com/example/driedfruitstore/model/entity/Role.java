@@ -7,12 +7,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "roles")
-public class Role {
+public class Role implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +24,4 @@ public class Role {
     @Column(nullable = false, unique = true)
     private RoleEnum name;
 
-    public Role(RoleEnum name) {
-        this.name = name;
-    }
 }
