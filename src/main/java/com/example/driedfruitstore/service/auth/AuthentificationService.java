@@ -1,8 +1,8 @@
 package com.example.driedfruitstore.service.auth;
 
-import com.example.driedfruitstore.dto.AuthentificationRequestDTO;
-import com.example.driedfruitstore.dto.AuthentificationResponseDTO;
-import com.example.driedfruitstore.dto.RegisterRequestDTO;
+import com.example.driedfruitstore.dto.request.AuthentificationRequest;
+import com.example.driedfruitstore.dto.response.AuthentificationResponseDTO;
+import com.example.driedfruitstore.dto.request.RegisterRequest;
 import com.example.driedfruitstore.model.entity.auth.Token;
 import com.example.driedfruitstore.model.emuns.TokenType;
 import com.example.driedfruitstore.model.emuns.RoleEnum;
@@ -56,7 +56,7 @@ public class AuthentificationService {
         return new AuthentificationResponseDTO(token);
     }
 
-    public AuthentificationResponseDTO register(RegisterRequestDTO registerRequestDTO) {
+    public AuthentificationResponseDTO register(RegisterRequest registerRequestDTO) {
         User user = User.builder()
                 .email(registerRequestDTO.email())
                 .password(passwordEncoder.encode(registerRequestDTO.password()))
@@ -72,7 +72,7 @@ public class AuthentificationService {
         return new AuthentificationResponseDTO(token);
     }
 
-    public AuthentificationResponseDTO authenticate(AuthentificationRequestDTO authentificationRequestDTO) {
+    public AuthentificationResponseDTO authenticate(AuthentificationRequest authentificationRequestDTO) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         authentificationRequestDTO.email(),
@@ -88,6 +88,11 @@ public class AuthentificationService {
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                 user, null, user.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authToken);
+
+
+
+        AuthUser authUser = new AuthUser();
+        System.out.println(authUser.getAuthenticatedUser());
 
         return new AuthentificationResponseDTO(token);
     }

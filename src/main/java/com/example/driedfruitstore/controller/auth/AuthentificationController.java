@@ -1,9 +1,9 @@
 package com.example.driedfruitstore.controller.auth;
 
 
-import com.example.driedfruitstore.dto.AuthentificationRequestDTO;
-import com.example.driedfruitstore.dto.AuthentificationResponseDTO;
-import com.example.driedfruitstore.dto.RegisterRequestDTO;
+import com.example.driedfruitstore.dto.request.AuthentificationRequest;
+import com.example.driedfruitstore.dto.response.AuthentificationResponseDTO;
+import com.example.driedfruitstore.dto.request.RegisterRequest;
 import com.example.driedfruitstore.service.auth.AuthentificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class AuthentificationController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthentificationResponseDTO> register(
-            @RequestBody RegisterRequestDTO requestDTO
+            @RequestBody RegisterRequest requestDTO
     ){
         return ResponseEntity.ok(authentificationService.register(requestDTO));
     }
@@ -29,7 +29,7 @@ public class AuthentificationController {
 
     @PostMapping("/authentification")
     public ResponseEntity<AuthentificationResponseDTO> authentification(
-            @RequestBody AuthentificationRequestDTO requestDTO
+            @RequestBody AuthentificationRequest requestDTO
     ){
         return ResponseEntity.ok(authentificationService.authenticate(requestDTO));
     }
