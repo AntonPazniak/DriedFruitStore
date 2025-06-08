@@ -3,6 +3,7 @@ package com.example.driedfruitstore.service.auth;
 import com.example.driedfruitstore.dto.request.AuthentificationRequest;
 import com.example.driedfruitstore.dto.response.AuthentificationResponseDTO;
 import com.example.driedfruitstore.dto.request.RegisterRequest;
+import com.example.driedfruitstore.exception.ForbiddenException;
 import com.example.driedfruitstore.model.entity.auth.Token;
 import com.example.driedfruitstore.model.emuns.TokenType;
 import com.example.driedfruitstore.model.emuns.RoleEnum;
@@ -79,7 +80,9 @@ public class AuthentificationService {
                         authentificationRequestDTO.password()
                 )
         );
-        User user = userService.findByEmail(authentificationRequestDTO.email()).orElseThrow();
+        User user = userService.findByEmail(authentificationRequestDTO.email())
+                .orElseThrow(() -> new ForbiddenException("Email or password is incorrect"));
+
         String token = jwtService.generateToken(user);
 
         revokeAllUserTokens(user);

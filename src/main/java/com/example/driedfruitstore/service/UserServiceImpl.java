@@ -3,6 +3,7 @@ package com.example.driedfruitstore.service;
 import com.example.driedfruitstore.dto.request.UserEditParamsRequest;
 import com.example.driedfruitstore.dto.user.UserDTO;
 import com.example.driedfruitstore.dto.user.UserEditDTO;
+import com.example.driedfruitstore.exception.NotFoundException;
 import com.example.driedfruitstore.mapper.UserDTOMapper;
 import com.example.driedfruitstore.model.entity.User;
 import com.example.driedfruitstore.repository.UserRepository;
@@ -19,7 +20,6 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
-    private final AuthUser authUser;
     private final PasswordEncoder encoder;
     private final UserDTOMapper userDTOMapper;
 
@@ -55,6 +55,13 @@ public class UserServiceImpl implements UserService{
         user.setFirstName(dto.firstName());
         user.setLastName(dto.lastName());
         return userDTOMapper.apply(userRepository.save(user));
+    }
+
+
+    public UserDTO getUserById(Long id) {
+        return userDTOMapper.apply(userRepository.findById(id).orElseThrow(
+                ()-> new NotFoundException("<UNK> <UNK> <UNK> <UNK>")
+        ));
     }
 
 
