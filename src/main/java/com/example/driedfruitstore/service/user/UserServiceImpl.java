@@ -1,15 +1,12 @@
-package com.example.driedfruitstore.service;
+package com.example.driedfruitstore.service.user;
 
 import com.example.driedfruitstore.dto.request.UserEditParamsRequest;
 import com.example.driedfruitstore.dto.user.UserDTO;
-import com.example.driedfruitstore.dto.user.UserEditDTO;
 import com.example.driedfruitstore.exception.NotFoundException;
 import com.example.driedfruitstore.mapper.UserDTOMapper;
 import com.example.driedfruitstore.model.entity.User;
 import com.example.driedfruitstore.repository.UserRepository;
-import com.example.driedfruitstore.service.auth.AuthUser;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.example.driedfruitstore.service.facade;
+package com.example.driedfruitstore.service.facade.user;
 
 import com.example.driedfruitstore.dto.request.UserEditParamsRequest;
 import com.example.driedfruitstore.dto.request.UserEditPasswordRequest;

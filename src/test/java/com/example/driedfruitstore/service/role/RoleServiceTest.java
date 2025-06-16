@@ -2,8 +2,7 @@ package com.example.driedfruitstore.service.role;
 
 
 import com.example.driedfruitstore.repository.UserRepository;
-import com.example.driedfruitstore.service.UserServiceImpl;
-import org.junit.jupiter.api.Test;
+import com.example.driedfruitstore.service.user.UserServiceImpl;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

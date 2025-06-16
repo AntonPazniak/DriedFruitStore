@@ -5,12 +5,12 @@ import com.example.driedfruitstore.dto.response.AuthentificationResponseDTO;
 import com.example.driedfruitstore.dto.request.RegisterRequest;
 import com.example.driedfruitstore.exception.ForbiddenException;
 import com.example.driedfruitstore.model.entity.auth.Token;
-import com.example.driedfruitstore.model.emuns.TokenType;
+import com.example.driedfruitstore.model.emuns.TokenTypeEnum;
 import com.example.driedfruitstore.model.emuns.RoleEnum;
 import com.example.driedfruitstore.model.entity.User;
 import com.example.driedfruitstore.repository.auth.TokenRepository;
-import com.example.driedfruitstore.service.RoleService;
-import com.example.driedfruitstore.service.UserService;
+import com.example.driedfruitstore.service.user.RoleService;
+import com.example.driedfruitstore.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -104,7 +104,7 @@ public class AuthentificationService {
         var token = Token.builder()
                 .user(user)
                 .token(jwtToken)
-                .tokenType(TokenType.BEARER)
+                .tokenType(TokenTypeEnum.BEARER)
                 .expired(false)
                 .revoked(false)
                 .build();

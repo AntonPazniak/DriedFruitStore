@@ -1,9 +1,8 @@
-package com.example.driedfruitstore.service;
+package com.example.driedfruitstore.service.user;
 
 import com.example.driedfruitstore.model.emuns.RoleEnum;
 import com.example.driedfruitstore.model.entity.Role;
 import com.example.driedfruitstore.repository.RoleRepository;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;

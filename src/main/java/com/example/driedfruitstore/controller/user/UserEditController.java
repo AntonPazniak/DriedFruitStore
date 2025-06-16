@@ -3,7 +3,7 @@ package com.example.driedfruitstore.controller.user;
 import com.example.driedfruitstore.dto.request.UserEditParamsRequest;
 import com.example.driedfruitstore.dto.request.UserEditPasswordRequest;
 import com.example.driedfruitstore.dto.user.UserDTO;
-import com.example.driedfruitstore.service.facade.UserEditFacade;
+import com.example.driedfruitstore.service.facade.user.UserEditFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

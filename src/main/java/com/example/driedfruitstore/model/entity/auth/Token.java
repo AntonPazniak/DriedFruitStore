@@ -1,6 +1,6 @@
 package com.example.driedfruitstore.model.entity.auth;
 
-import com.example.driedfruitstore.model.emuns.TokenType;
+import com.example.driedfruitstore.model.emuns.TokenTypeEnum;
 import com.example.driedfruitstore.model.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,7 +23,7 @@ public class Token {
     public String token;
 
     @Enumerated(EnumType.STRING)
-    public TokenType tokenType = TokenType.BEARER;
+    public TokenTypeEnum tokenType = TokenTypeEnum.BEARER;
 
     public boolean revoked;
 
