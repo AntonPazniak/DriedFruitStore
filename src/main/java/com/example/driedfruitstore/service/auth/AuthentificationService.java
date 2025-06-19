@@ -1,8 +1,8 @@
 package com.example.driedfruitstore.service.auth;
 
-import com.example.driedfruitstore.dto.request.AuthentificationRequest;
-import com.example.driedfruitstore.dto.response.AuthentificationResponseDTO;
-import com.example.driedfruitstore.dto.request.RegisterRequest;
+import com.example.driedfruitstore.model.dto.request.AuthentificationRequest;
+import com.example.driedfruitstore.model.dto.response.AuthentificationResponseDTO;
+import com.example.driedfruitstore.model.dto.request.RegisterRequest;
 import com.example.driedfruitstore.exception.ForbiddenException;
 import com.example.driedfruitstore.model.entity.auth.Token;
 import com.example.driedfruitstore.model.emuns.TokenTypeEnum;
@@ -92,10 +92,6 @@ public class AuthentificationService {
                 user, null, user.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authToken);
 
-
-
-        AuthUser authUser = new AuthUser();
-        System.out.println(authUser.getAuthenticatedUser());
 
         return new AuthentificationResponseDTO(token);
     }

@@ -1,4 +1,4 @@
-package com.example.driedfruitstore.dto.product;
+package com.example.driedfruitstore.model.dto.product;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

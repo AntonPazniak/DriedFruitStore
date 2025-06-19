@@ -1,6 +1,7 @@
 package com.example.driedfruitstore.model.entity;
 
 import com.example.driedfruitstore.model.emuns.RoleEnum;
+import com.example.driedfruitstore.model.entity.cart.Cart;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -43,6 +44,9 @@ public class User implements UserDetails {
     private LocalDateTime createdDate;
     @LastModifiedDate
     private LocalDateTime lastModifiedDate;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Cart cart;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

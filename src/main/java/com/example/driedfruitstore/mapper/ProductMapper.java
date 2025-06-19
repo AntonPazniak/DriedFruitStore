@@ -1,6 +1,6 @@
 package com.example.driedfruitstore.mapper;
 
-import com.example.driedfruitstore.dto.product.ProductDTO;
+import com.example.driedfruitstore.model.dto.product.ProductDTO;
 import com.example.driedfruitstore.model.entity.product.Product;
 import org.springframework.stereotype.Component;
 

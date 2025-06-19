@@ -1,4 +1,4 @@
-package com.example.driedfruitstore.dto.user;
+package com.example.driedfruitstore.model.dto.user;
 
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;

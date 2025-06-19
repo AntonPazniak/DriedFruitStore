@@ -1,6 +1,6 @@
 package com.example.driedfruitstore.controller.product;
 
-import com.example.driedfruitstore.dto.product.ProductDTO;
+import com.example.driedfruitstore.model.dto.product.ProductDTO;
 import com.example.driedfruitstore.service.facade.product.ProductFacadeImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

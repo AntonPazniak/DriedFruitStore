@@ -1,9 +1,8 @@
 package com.example.driedfruitstore.service.facade.product;
 
 
-import com.example.driedfruitstore.dto.product.ProductDTO;
+import com.example.driedfruitstore.model.dto.product.ProductDTO;
 import com.example.driedfruitstore.service.auth.AuthUser;
-import com.example.driedfruitstore.service.auth.AuthentificationService;
 import com.example.driedfruitstore.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 

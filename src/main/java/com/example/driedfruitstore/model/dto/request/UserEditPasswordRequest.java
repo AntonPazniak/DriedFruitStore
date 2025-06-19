@@ -1,4 +1,4 @@
-package com.example.driedfruitstore.dto.request;
+package com.example.driedfruitstore.model.dto.request;
 
 public record UserEditPasswordRequest (String oldPassword, String newPassword) {
 }

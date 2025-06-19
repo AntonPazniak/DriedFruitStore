@@ -1,7 +1,7 @@
 package com.example.driedfruitstore.service.user;
 
-import com.example.driedfruitstore.dto.request.UserEditParamsRequest;
-import com.example.driedfruitstore.dto.user.UserDTO;
+import com.example.driedfruitstore.model.dto.request.UserEditParamsRequest;
+import com.example.driedfruitstore.model.dto.user.UserDTO;
 import com.example.driedfruitstore.exception.NotFoundException;
 import com.example.driedfruitstore.mapper.UserDTOMapper;
 import com.example.driedfruitstore.model.entity.User;

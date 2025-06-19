@@ -1,4 +1,4 @@
-package com.example.driedfruitstore.dto.request;
+package com.example.driedfruitstore.model.dto.request;
 
 public record RegisterRequest(String firstName, String lastName, String email, String password) {
 }

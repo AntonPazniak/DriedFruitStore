@@ -1,8 +1,7 @@
 package com.example.driedfruitstore.mapper;
 
-import com.example.driedfruitstore.dto.user.UserDTO;
+import com.example.driedfruitstore.model.dto.user.UserDTO;
 import com.example.driedfruitstore.model.entity.User;
-import org.apache.catalina.mapper.Mapper;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;

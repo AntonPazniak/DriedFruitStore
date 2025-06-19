@@ -1,18 +1,19 @@
 package com.example.driedfruitstore.service.product;
 
-import com.example.driedfruitstore.dto.product.ProductDTO;
+import com.example.driedfruitstore.model.dto.product.ProductDTO;
 import com.example.driedfruitstore.exception.NotFoundException;
 import com.example.driedfruitstore.mapper.ProductMapper;
 import com.example.driedfruitstore.model.entity.product.Product;
 import com.example.driedfruitstore.repository.product.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;

@@ -1,8 +1,8 @@
 package com.example.driedfruitstore.service.facade.user;
 
-import com.example.driedfruitstore.dto.request.UserEditParamsRequest;
-import com.example.driedfruitstore.dto.request.UserEditPasswordRequest;
-import com.example.driedfruitstore.dto.user.UserDTO;
+import com.example.driedfruitstore.model.dto.request.UserEditParamsRequest;
+import com.example.driedfruitstore.model.dto.request.UserEditPasswordRequest;
+import com.example.driedfruitstore.model.dto.user.UserDTO;
 import com.example.driedfruitstore.model.entity.User;
 import com.example.driedfruitstore.service.user.UserService;
 import com.example.driedfruitstore.service.auth.AuthUser;

@@ -1,9 +1,9 @@
 package com.example.driedfruitstore.controller.auth;
 
 
-import com.example.driedfruitstore.dto.request.AuthentificationRequest;
-import com.example.driedfruitstore.dto.response.AuthentificationResponseDTO;
-import com.example.driedfruitstore.dto.request.RegisterRequest;
+import com.example.driedfruitstore.model.dto.request.AuthentificationRequest;
+import com.example.driedfruitstore.model.dto.response.AuthentificationResponseDTO;
+import com.example.driedfruitstore.model.dto.request.RegisterRequest;
 import com.example.driedfruitstore.service.auth.AuthentificationService;
 import com.example.driedfruitstore.service.auth.LogoutService;
 import jakarta.servlet.http.HttpServletRequest;
