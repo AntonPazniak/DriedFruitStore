@@ -2,12 +2,11 @@ package com.example.driedfruitstore.configurathion;
 
 
 import com.example.driedfruitstore.repository.auth.TokenRepository;
-import com.example.driedfruitstore.service.auth.JwtService;
+import com.example.driedfruitstore.service.impl.auth.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

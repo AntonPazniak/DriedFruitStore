@@ -2,8 +2,8 @@ package com.example.driedfruitstore.service.facade.product;
 
 
 import com.example.driedfruitstore.model.dto.product.ProductDTO;
-import com.example.driedfruitstore.service.auth.AuthUser;
-import com.example.driedfruitstore.service.product.ProductService;
+import com.example.driedfruitstore.service.impl.auth.AuthUser;
+import com.example.driedfruitstore.service.inte.product.ProductService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.data.domain.Page;

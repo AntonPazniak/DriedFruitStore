@@ -1,8 +1,8 @@
 package com.example.driedfruitstore.service.facade;
 
 import com.example.driedfruitstore.model.dto.cart.CartDTO;
-import com.example.driedfruitstore.service.auth.AuthUser;
-import com.example.driedfruitstore.service.cart.CartService;
+import com.example.driedfruitstore.service.impl.auth.AuthUser;
+import com.example.driedfruitstore.service.inte.cart.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
