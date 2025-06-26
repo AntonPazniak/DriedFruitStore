@@ -21,6 +21,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -43,6 +44,12 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.toDto(
                 createOrderFromCartAndSave(cartService.getCart(user))
         );
+    }
+
+    @Override
+    public List<OrderDto> findAllByUser(User user) {
+        return orderRepository.findAllByUser(user)
+                .stream().map(orderMapper::toDto).toList();
     }
 
     private Order createOrderFromCartAndSave(Cart cart) {
