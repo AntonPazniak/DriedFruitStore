@@ -47,7 +47,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductDTO editProduct(ProductDTO productDTO) {
         return productMapper
                 .toDto(productRepository
-                        .save(productMapper.fromDto(productDTO)
+                        .save(productMapper.fromDTO(productDTO)
                         ));
     }
  

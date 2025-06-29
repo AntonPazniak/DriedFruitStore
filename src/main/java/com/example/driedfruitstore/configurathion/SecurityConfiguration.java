@@ -1,5 +1,6 @@
 package com.example.driedfruitstore.configurathion;
 
+import com.example.driedfruitstore.model.emuns.RoleEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +28,8 @@ public class SecurityConfiguration {
                 .formLogin(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**", "/oauth2/**", "/").permitAll()
+                        .requestMatchers("/api/admin/**")
+                        .hasAnyRole(RoleEnum.ADMIN.name(), RoleEnum.MODERATOR.name())
                         .anyRequest().permitAll()
                 )
                 .oauth2Login(oauth2 -> oauth2

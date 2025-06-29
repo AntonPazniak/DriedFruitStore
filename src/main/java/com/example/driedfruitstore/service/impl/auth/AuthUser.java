@@ -1,6 +1,7 @@
 package com.example.driedfruitstore.service.impl.auth;
 
 
+import com.example.driedfruitstore.exception.ForbiddenException;
 import com.example.driedfruitstore.exception.UnauthorizedException;
 import com.example.driedfruitstore.model.emuns.RoleEnum;
 import com.example.driedfruitstore.model.entity.Role;
@@ -30,11 +31,15 @@ public class AuthUser {
         return entityManager.getReference(User.class, userId);
     }
 
-    public boolean isModerAuthenticatedUser() {
+    public User  getAuthenticatedModer() {
         User currentUser = getAuthenticatedUser();
-        return currentUser.getRoles().stream()
+        if(currentUser.getRoles().stream()
                 .map(Role::getName)
-                .anyMatch(role -> role == RoleEnum.MODERATOR || role == RoleEnum.ADMIN);
+                .anyMatch(role -> role == RoleEnum.MODERATOR || role == RoleEnum.ADMIN)
+        )
+            return currentUser;
+        else
+            throw new ForbiddenException("You don't have permission to perform this action.");
     }
 
 
