@@ -1,4 +1,4 @@
-package com.example.driedfruitstore.service.facade.admin;
+package com.example.driedfruitstore.service.facade.admin.product;
 
 
 import com.example.driedfruitstore.model.dto.product.ProductAdminDTO;
@@ -17,17 +17,17 @@ public class AdminProductFacadeImpl {
     private final AuthUser authUser;
 
     public ProductAdminDTO getProductById(Long id){
-        authUser.getAuthenticatedModer();
+        authUser.getAuthenticatedAdmin();
         return adminProductService.getProduct(id);
     }
 
     public ProductAdminDTO createProduct(NewProductRequest newProductRequest){
-        authUser.getAuthenticatedModer();
+        authUser.getAuthenticatedAdmin();
         return adminProductService.createNewProduct(newProductRequest);
     }
 
     public ProductAdminDTO updateProduct(EditProductRequest request){
-        authUser.getAuthenticatedModer();
+        authUser.getAuthenticatedAdmin();
         return adminProductService.updateProduct(request);
     }
 

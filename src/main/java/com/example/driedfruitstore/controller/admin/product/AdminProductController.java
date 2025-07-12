@@ -1,11 +1,10 @@
-package com.example.driedfruitstore.controller.admin;
+package com.example.driedfruitstore.controller.admin.product;
 
 import com.example.driedfruitstore.model.dto.product.ProductAdminDTO;
 import com.example.driedfruitstore.model.dto.request.EditProductRequest;
 import com.example.driedfruitstore.model.dto.request.NewProductRequest;
-import com.example.driedfruitstore.service.facade.admin.AdminProductFacadeImpl;
+import com.example.driedfruitstore.service.facade.admin.product.AdminProductFacadeImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,21 +15,21 @@ public class AdminProductController {
 
     private final AdminProductFacadeImpl adminProductFacade;
 
-    @GetMapping("/")
-    public ResponseEntity<ProductAdminDTO> getProduct(Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductAdminDTO> getProduct(@PathVariable Long id) {
         return ResponseEntity.ok(
                 adminProductFacade.getProductById(id)
         );
     }
 
-    @PostMapping("/new")
+    @PostMapping("/")
     public ResponseEntity<ProductAdminDTO> createNewProduct(@RequestBody NewProductRequest request){
         return ResponseEntity.ok(
                 adminProductFacade.createProduct(request)
         );
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<ProductAdminDTO> updateProduct(@RequestBody EditProductRequest request){
         return ResponseEntity.ok(
                 adminProductFacade.updateProduct(request)

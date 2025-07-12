@@ -4,6 +4,9 @@ import com.example.driedfruitstore.model.emuns.RoleEnum;
 import com.example.driedfruitstore.model.entity.cart.Cart;
 import com.example.driedfruitstore.model.entity.order.Order;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,7 +38,13 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Size(min = 1)
+    @NotBlank
+    @Column(nullable = false)
     private String login;
+    @NotBlank
+    @Column(nullable = false)
+    @Email
     private String email;
     private String password;
     private String firstName;

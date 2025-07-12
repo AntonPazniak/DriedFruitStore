@@ -31,11 +31,13 @@ public class AuthUser {
         return entityManager.getReference(User.class, userId);
     }
 
-    public User  getAuthenticatedModer() {
+    public User getAuthenticatedAdmin() {
         User currentUser = getAuthenticatedUser();
         if(currentUser.getRoles().stream()
                 .map(Role::getName)
-                .anyMatch(role -> role == RoleEnum.MODERATOR || role == RoleEnum.ADMIN)
+                .anyMatch(role ->
+//                        role == RoleEnum.MODERATOR ||
+                                role == RoleEnum.ADMIN)
         )
             return currentUser;
         else

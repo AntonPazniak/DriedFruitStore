@@ -35,10 +35,17 @@ public class AuthentificationService {
 
     public AuthentificationResponseDTO oAuthenticate(Map<String, Object> attributes){
         String email = (String) attributes.get("email");
+        String login =
+                (attributes.get("login") != null) ? attributes.get("login").toString()
+                        : (attributes.get("preferred_username") != null) ? attributes.get("preferred_username").toString()
+                        : (attributes.get("name") != null) ? attributes.get("name").toString().split(" ")[0]
+                        : email.split("@")[0];
+
         User user = userService.findByEmail(email).orElseGet(
                 () ->{
                     User newUser =  User.builder()
                             .email(email)
+                            .login(login)
                             .firstName(attributes.get("name").toString())
                             .roles(Set.of(roleService.getRole(RoleEnum.USER)))
                             .build();
@@ -60,6 +67,7 @@ public class AuthentificationService {
     public AuthentificationResponseDTO register(RegisterRequest registerRequestDTO) {
         User user = User.builder()
                 .email(registerRequestDTO.email())
+                .login(registerRequestDTO.login())
                 .password(passwordEncoder.encode(registerRequestDTO.password()))
                 .firstName(registerRequestDTO.firstName())
                 .lastName(registerRequestDTO.lastName())

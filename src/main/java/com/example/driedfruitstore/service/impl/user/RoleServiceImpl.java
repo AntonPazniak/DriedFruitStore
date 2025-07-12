@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -38,4 +39,11 @@ public class RoleServiceImpl implements RoleService, ApplicationRunner {
     public Role getRole(RoleEnum roleEnum) {
         return roleCache.get(roleEnum);
     }
+
+    @Override
+    public List<String> getAllRoles() {
+        return roleCache.keySet().stream().map(RoleEnum::name).toList();
+    }
+
+
 }
