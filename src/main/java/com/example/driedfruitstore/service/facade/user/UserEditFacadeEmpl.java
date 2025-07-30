@@ -4,7 +4,7 @@ import com.example.driedfruitstore.model.dto.request.UserEditParamsRequest;
 import com.example.driedfruitstore.model.dto.request.UserEditPasswordRequest;
 import com.example.driedfruitstore.model.dto.user.UserDTO;
 import com.example.driedfruitstore.model.entity.User;
-import com.example.driedfruitstore.service.inte.user.UserService;
+import com.example.driedfruitstore.service.inte.user.UserEditService;
 import com.example.driedfruitstore.service.impl.auth.AuthUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
     @RequiredArgsConstructor
     public class UserEditFacadeEmpl implements UserEditFacade{
 
-        private final UserService userService;
+        private final UserEditService userService;
         private final AuthUser authUser;
 
         @Override

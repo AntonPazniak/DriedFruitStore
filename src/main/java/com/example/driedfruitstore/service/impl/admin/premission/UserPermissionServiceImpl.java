@@ -8,7 +8,7 @@ import com.example.driedfruitstore.model.entity.Role;
 import com.example.driedfruitstore.model.entity.User;
 import com.example.driedfruitstore.service.inte.admin.UserPermissionService;
 import com.example.driedfruitstore.service.inte.user.RoleService;
-import com.example.driedfruitstore.service.inte.user.UserService;
+import com.example.driedfruitstore.service.inte.user.UserEditPermissionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserPermissionServiceImpl implements UserPermissionService {
 
-    private final UserService userService;
+    private final UserEditPermissionService userService;
     private final RoleService roleService;
     private final UserRoleMapper userRoleMapper;
 

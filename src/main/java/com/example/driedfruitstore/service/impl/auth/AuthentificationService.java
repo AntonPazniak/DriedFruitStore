@@ -2,15 +2,14 @@ package com.example.driedfruitstore.service.impl.auth;
 
 import com.example.driedfruitstore.model.dto.request.AuthentificationRequest;
 import com.example.driedfruitstore.model.dto.response.AuthentificationResponseDTO;
-import com.example.driedfruitstore.model.dto.request.RegisterRequest;
+import com.example.driedfruitstore.model.dto.request.UserRegisterRequest;
 import com.example.driedfruitstore.exception.ForbiddenException;
 import com.example.driedfruitstore.model.entity.auth.Token;
 import com.example.driedfruitstore.model.emuns.TokenTypeEnum;
-import com.example.driedfruitstore.model.emuns.RoleEnum;
 import com.example.driedfruitstore.model.entity.User;
 import com.example.driedfruitstore.repository.auth.TokenRepository;
 import com.example.driedfruitstore.service.inte.user.RoleService;
-import com.example.driedfruitstore.service.inte.user.UserService;
+import com.example.driedfruitstore.service.inte.user.UserAuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,38 +19,24 @@ import org.springframework.security.authentication.AuthenticationManager;
 
 
 import java.util.Map;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
 public class AuthentificationService {
 
-    private final UserService userService;
+    private final UserAuthenticationService userAuthenticationService;
     private final RoleService roleService;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     private final PasswordEncoder passwordEncoder;
     private final TokenRepository tokenRepository;
 
-    public AuthentificationResponseDTO oAuthenticate(Map<String, Object> attributes){
+    public AuthentificationResponseDTO oAuthenticate(Map<String, Object> attributes) {
         String email = (String) attributes.get("email");
-        String login =
-                (attributes.get("login") != null) ? attributes.get("login").toString()
-                        : (attributes.get("preferred_username") != null) ? attributes.get("preferred_username").toString()
-                        : (attributes.get("name") != null) ? attributes.get("name").toString().split(" ")[0]
-                        : email.split("@")[0];
 
-        User user = userService.findByEmail(email).orElseGet(
-                () ->{
-                    User newUser =  User.builder()
-                            .email(email)
-                            .login(login)
-                            .firstName(attributes.get("name").toString())
-                            .roles(Set.of(roleService.getRole(RoleEnum.USER)))
-                            .build();
-                    return userService.save(newUser);
-                }
-        );
+        User user = userAuthenticationService.findByEmail(email)
+                .orElseGet(
+                        () -> userAuthenticationService.createUser(attributes));
 
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                 user, null, user.getAuthorities());
@@ -64,16 +49,8 @@ public class AuthentificationService {
         return new AuthentificationResponseDTO(token);
     }
 
-    public AuthentificationResponseDTO register(RegisterRequest registerRequestDTO) {
-        User user = User.builder()
-                .email(registerRequestDTO.email())
-                .login(registerRequestDTO.login())
-                .password(passwordEncoder.encode(registerRequestDTO.password()))
-                .firstName(registerRequestDTO.firstName())
-                .lastName(registerRequestDTO.lastName())
-                .roles(Set.of(roleService.getRole(RoleEnum.USER)))
-                .build();
-        userService.save(user);
+    public AuthentificationResponseDTO register(UserRegisterRequest registerRequestDTO) {
+        User user = userAuthenticationService.createUser(registerRequestDTO);
         String token = jwtService.generateToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user, token);
@@ -88,7 +65,7 @@ public class AuthentificationService {
                         authentificationRequestDTO.password()
                 )
         );
-        User user = userService.findByEmail(authentificationRequestDTO.email())
+        User user = userAuthenticationService.findByEmail(authentificationRequestDTO.email())
                 .orElseThrow(() -> new ForbiddenException("Email or password is incorrect"));
 
         String token = jwtService.generateToken(user);

@@ -4,15 +4,13 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 /**
  * DTO for user registration.
  * Used to validate incoming data from a registration form or API request.
  */
-public record RegisterRequest(
+public record UserRegisterRequest(
 
         @NotBlank(message = "Login must not be blank")
         @Size(min = 3, max = 50, message = "Login must be between 3 and 50 characters")

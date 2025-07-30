@@ -18,31 +18,27 @@ public class PermissionController {
     private final PermissionFacadeImpl userPermissionFacade;
 
     @PostMapping("/{userLogin}")
-    public ResponseEntity<UserRoleDTO> grantPermission(@PathVariable String userLogin) {
-        return ResponseEntity.ok(
-                userPermissionFacade.addPermissionModer(userLogin)
-        );
+    @ResponseStatus(HttpStatus.OK)
+    public UserRoleDTO grantPermission(@PathVariable String userLogin) {
+        return userPermissionFacade.addPermissionModer(userLogin);
     }
 
     @DeleteMapping("/{userLogin}")
-    public ResponseEntity<UserRoleDTO> revokePermission(@PathVariable String userLogin) {
-        return ResponseEntity.ok(
-                userPermissionFacade.removePermissionModer(userLogin)
-        );
+    @ResponseStatus(HttpStatus.OK)
+    public UserRoleDTO revokePermission(@PathVariable String userLogin) {
+        return userPermissionFacade.removePermissionModer(userLogin);
     }
 
     @GetMapping("/{userLogin}")
-    public ResponseEntity<UserRoleDTO> getUserPermission(@PathVariable String userLogin) {
-        return ResponseEntity.ok(
-                userPermissionFacade.getUserPermission(userLogin)
-        );
+    @ResponseStatus(HttpStatus.OK)
+    public UserRoleDTO getUserPermission(@PathVariable String userLogin) {
+        return userPermissionFacade.getUserPermission(userLogin);
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<String>> getAllPermissions() {
-        return ResponseEntity.ok(
-                userPermissionFacade.getAllPermissions()
-        );
+    @ResponseStatus(HttpStatus.OK)
+    public List<String> getAllPermissions() {
+        return userPermissionFacade.getAllPermissions();
     }
 
 }
